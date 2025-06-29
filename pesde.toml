@@ -1,7 +1,7 @@
 name = "ringames/flashui"
 version = "0.1.0"
 authors = ["xdashxofficial"]
-license = "ringames"
+license = "MIT"
 
 [target]
 environment = "roblox"

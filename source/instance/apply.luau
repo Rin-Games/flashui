@@ -1,7 +1,7 @@
 --!native
 --!optimize 2
 
-local function apply(instance, properties)
+local function apply<instance>(instance: instance, properties): instance
 	return instance
 end
 
