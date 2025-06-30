@@ -58,6 +58,10 @@ type function get_properties(self: type, class: type)
 		types.singleton("UniqueId"),
 	})
 
+	local head_table = {}
+	local args_table: any = {head = head_table}
+	local empty_table: any = {}
+
 	while current do
 		for property, value in current:properties() do
 			if table.find(read_only, property) then continue end
@@ -71,10 +75,18 @@ type function get_properties(self: type, class: type)
 					)
 				)
 			elseif value.write then
+				head_table[1] = value.read
+
 				properties:setproperty(
 					property,
 					types.optional(
-						value.write
+						types.unionof(
+							value.write,
+							types.newfunction(
+								empty_table,
+								args_table
+							)
+						)
 					)
 				)
 			end
@@ -95,7 +107,7 @@ setmetatable(
 			local success = pcall(Instance.new, class)
 			if not success then
 				warn(`add logger`)
-				error(`cannot crete class {class}`)
+				error(`cannot crete class {class}`, 2)
 			end
 			local function cached()
 				return Instance.new(class)
