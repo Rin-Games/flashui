@@ -7,7 +7,10 @@ local function create()
 	return node
 end
 
-local function destroy()
+local function destroy(node)
+end
+
+local function run(node, callback, ...)
 end
 
 local function create_source(value)
@@ -27,6 +30,7 @@ end
 return {
 	create = create,
 	destroy = destroy,
+	run = run,
 	create_source = create_source,
 	update_source = update_source,
 	push_source = push_source,

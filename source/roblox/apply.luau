@@ -1,7 +1,7 @@
 --!native
 --!optimize 2
 
-local function apply<instance>(instance: instance, properties): instance
+local function apply<instance>(instance: instance, properties: {[any]: any}): instance
 
 	for key, value in properties do
 		local key_type = type(key)

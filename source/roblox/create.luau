@@ -24,12 +24,12 @@ setmetatable(
 	}
 )
 
-local function create<class>(
-	class: class | keyof<types.Instances> | ""
+local function create<Class>(
+	class: Class | keyof<types.Instances> | ""
 ): (
-	properties: types.GetProperties<types.Instances, class>
+	properties: types.GetProperties<types.Instances, Class>
 ) -> (
-	types.GetInstance<types.Instances, class>
+	types.GetInstance<types.Instances, Class>
 )
 	local this = cache[class]
 	return function(properties)
