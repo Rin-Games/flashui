@@ -1,8 +1,8 @@
 --!native
 --!optimize 2
 
-local types = require("../types")
 local apply = require("./apply")
+local types = require("../types")
 
 local cache = {}
 
@@ -12,7 +12,6 @@ setmetatable(
 		__index = function(self, class)
 			local success = pcall(Instance.new, class)
 			if not success then
-				warn(`add logger`)
 				error(`cannot crete class {class}`, 2)
 			end
 			local function cached()

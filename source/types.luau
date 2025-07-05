@@ -56,7 +56,9 @@ export type function GetProperties(self: type, class: type)
 
 	while current do
 		for property, value in current:properties() do
-			if table.find(read_only, property) then continue end
+			if table.find(read_only, property) then
+				continue
+			end
 
 			local signal = IsSignal(value.read)
 			if signal then

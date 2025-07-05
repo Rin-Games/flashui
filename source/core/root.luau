@@ -2,10 +2,11 @@
 --!optimize 2
 
 local graph = require("../graph")
+local types = require("../types")
 
 local references = {}
 
-local function root<T...>(callback: (destroy: () -> ()) -> (T...)): (() -> (), T...)
+local function root<T...>(callback: (types.Cleanup) -> (T...)): (types.Cleanup, T...)
 	local node = graph.create()
 
 	references[node] = true
@@ -19,7 +20,7 @@ local function root<T...>(callback: (destroy: () -> ()) -> (T...)): (() -> (), T
 		graph.destroy(node)
 	end
 
-	local result = {} :: unknown -- TODO do this asap
+	local result = {} :: unknown -- TODO: do this asap
 
 	return destroy, result :: any
 end

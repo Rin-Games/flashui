@@ -4,7 +4,7 @@
 local graph = require("../graph")
 local types = require("../types")
 
-local function source<T>(initial_value: T): types.source<T>
+local function source<T>(initial_value: T): types.Source<T>
 	local node = graph.create_source(initial_value)
 
 	return function(...: T): T
@@ -16,7 +16,7 @@ local function source<T>(initial_value: T): types.source<T>
 			graph.update_source(node, value)
 			return value
 		end
-	end :: types.source<T>
+	end :: types.Source<T>
 end
 
 return source

@@ -1,19 +1,31 @@
 --!native
 --!optimize 2
 
-local function create()
+export type Node<T> = {
+}
+
+export type SourceNode<T> = {
+	cache: T,
+}
+
+export type ReactiveNode<T> = {
+}
+
+
+-- TODO: do this asap
+local function create<T>(): Node<T>
 	local node = {
 	}
 	return node
 end
 
-local function destroy(node)
+-- TODO: do this asap
+local function destroy<T>(node: Node<T>)
 end
 
-local function run(node, callback, ...)
-end
 
-local function create_source(value)
+-- TODO: do this asap
+local function create_source<T>(value: T): SourceNode<T>
 	local node = {
 		cache = value
 	}
@@ -21,17 +33,34 @@ local function create_source(value)
 	return node
 end
 
-local function update_source(node, value)
+-- TODO: do this asap
+local function update_source<T>(node: SourceNode<T>, value: T)
 end
 
-local function push_source(node)
+-- TODO: do this asap
+local function push_source<T>(node: SourceNode<T>)
+end
+
+
+-- TODO: do this asap
+local function create_reactive<T>(): ReactiveNode<T>
+	local node = {
+	}
+
+	return node
+end
+
+-- TODO: do this asap
+local function evaluate_reactive<T>(node: ReactiveNode<T>)
+	return 0
 end
 
 return {
 	create = create,
 	destroy = destroy,
-	run = run,
 	create_source = create_source,
 	update_source = update_source,
 	push_source = push_source,
+	create_reactive = create_reactive,
+	evaluate_reactive = evaluate_reactive,
 }

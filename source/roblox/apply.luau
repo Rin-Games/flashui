@@ -19,6 +19,8 @@ local function apply<instance>(instance: instance, properties: {[any]: any}): in
 		elseif key_type == "number" then
 			if value_type == "function" then
 				--FUNCTION_RETURN_CHILDREN
+			elseif value_type == "table" then
+				--ACTION
 			elseif value_type == "userdata" then
 				--CHILDREN
 			end
